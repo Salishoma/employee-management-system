@@ -15,11 +15,13 @@ public interface EmployeeService {
 
     List<Employee> getAllEmployees();
 
-    void saveEmployee(Employee employee);
+//    void saveEmployee(Employee employee);
 
     void deleteEmployeeById(long id);
 
     Employee getEmployeeByEmailAndPassword(String email, String password);
 
-//    public List<SalaryRecord> getEmployeeSalaryHistory(Employee employee);
+    public void updateEmployee(Employee employee, Long id);
+
+    public List<SalaryRecord> getEmployeeSalaryHistory(Employee employee);
 }

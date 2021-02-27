@@ -32,6 +32,9 @@ public class EmployeeServiceImpl implements EmployeeService {
             employee1.setFirstName(employee.getFirstName());
             employee1.setLastName(employee.getLastName());
             employee1.setEmail(employee.getEmail());
+            employee1.setPassword(employee.getPassword());
+            employee1.setAddress(employee.getAddress());
+            employee1.setPhoneNumber(employee.getPhoneNumber());
             return employeeRepository.save(employee1);
         }
     }
@@ -53,10 +56,10 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeRepository.findAll();
     }
 
-    @Override
-    public void saveEmployee(Employee employee) {
-        employeeRepository.save(employee);
-    }
+//    @Override
+//    public void saveEmployee(Employee employee) {
+//        employeeRepository.save(employee);
+//    }
 
     @Override
     public void deleteEmployeeById(long id) {
@@ -69,15 +72,18 @@ public class EmployeeServiceImpl implements EmployeeService {
         return admin.orElse(null);
     }
 
-//    @Override
-//    public List<SalaryRecord> getEmployeeSalaryHistory(Employee employee){
-//        List<SalaryRecord> salaryHistory = salaryRepository.findAll();
-//        List<SalaryRecord> employeeSalaryHistory = employee.getEmployeeSalaryRecord();
-//        for(SalaryRecord record : salaryHistory){
-//            if(record.getEmployee().getEmployeeId().equals(employee.getEmployeeId())){
-//
-//            }
-//        }
-//        return salaryHistory;
-//    }
+    @Override
+    public void updateEmployee(Employee employee, Long employeeId) {
+        Employee name = employeeRepository.findById(employeeId).get();
+        name.setFirstName(employee.getFirstName());
+        name.setLastName(employee.getLastName());
+        name.setEmail(employee.getEmail());
+        employeeRepository.save(name);
+    }
+
+    @Override
+    public List<SalaryRecord> getEmployeeSalaryHistory(Employee employee){
+        return employee.getEmployeeSalaryRecord();
+
+    }
 }

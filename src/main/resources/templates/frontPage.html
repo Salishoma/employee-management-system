@@ -36,10 +36,13 @@
                     <td th:text="${employee.email}"></td>
                     <td> <a th:href="@{/update-employee/{id}(id=${employee.employeeId})}" class="btn btn-primary">Update</a>
                         <a th:href="@{/delete-employee/{id}(id=${employee.employeeId})}" class="btn btn-danger">Delete</a>
+                        <a th:href="@{/employee-list/{id}(id=${employee.employeeId})}" class="btn btn-primary">Info</a>
                     </td>
                 </tr>
                 </tbody>
             </table>
+
+            <button class="btn btn-danger btn-customized" type="submit"><a href="/logout">logout</a> </button>
         </div>
         <br>
     </div>
